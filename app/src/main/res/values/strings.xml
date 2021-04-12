@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ScorOlley</string>
+
+    <string name="homeMessage">To record the score of your favorite volleyball games</string>
+    <string name="homeNewGame">New Game</string>
+    <string name="homeExit">Exit</string>
+
+
+    <string name="preGameHomeTeamLabel">Home team:</string>
+    <string name="preGameAwayTeamLabel">Away team:</string>
+    <string name="preGameStart">Start match</string>
+
+    <string name="scoreGameExit">Exit</string>
+
+
+</resources>

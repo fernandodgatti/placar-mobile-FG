@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PlacÔlei</string>
+
+    <string name="homeMessage">Para marcar o placar dos seus jogos de vôlei favoritos</string>
+    <string name="homeNewGame">Novo Jogo</string>
+    <string name="homeExit">Sair</string>
+
+
+    <string name="preGameHomeTeamLabel">Time da casa:</string>
+    <string name="preGameAwayTeamLabel">Time visitante:</string>
+    <string name="preGameStart">Iniciar Partida</string>
+
+    <string name="scoreGameExit">Sair</string>
+
+</resources>
