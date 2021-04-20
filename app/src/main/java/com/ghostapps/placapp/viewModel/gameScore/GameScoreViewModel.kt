@@ -1,19 +1,24 @@
 package com.ghostapps.placapp.viewModel.gameScore
 
-import android.app.AlertDialog
+import com.ghostapps.placapp.domain.models.RecordModel
+import com.ghostapps.placapp.domain.useCases.InsertRegister
+import com.ghostapps.placapp.ui.gameRecords.GameRecordsActivity
+import com.ghostapps.placapp.ui.home.HomeActivity
 import com.ghostapps.placapp.viewModel.BaseViewModel
+import java.util.*
 
-class  GameScoreViewModel(
-    private val contract: GameScoreContract
+class GameScoreViewModel(
+    private val contract: GameScoreContract,
+    private val insertRegister: InsertRegister
 ): BaseViewModel() {
 
     var homeTeamName = ""
     var awayTeamName = ""
 
-    var homeTeamScore = 0
-    var awayTeamScore = 0
-    var homeTeamSetScore = 0
-    var awayTeamSetScore = 0
+    private var homeTeamScore = 0
+    private var awayTeamScore = 0
+    private var homeTeamSetScore = 0
+    private var awayTeamSetScore = 0
 
     var formattedHomeTeamScore = "00"
     var formattedAwayTeamScore = "00"
@@ -26,21 +31,24 @@ class  GameScoreViewModel(
     }
 
     fun onHomeTeamIncrease() {
-        homeTeamScore++
-        updateScore()
+        if (homeTeamScore < 25){
+            homeTeamScore++
+            updateScore()
 
-        var rulerDifferenceTwoPoints = homeTeamScore - awayTeamScore
-        var isTieBreaker = homeTeamSetScore == 2 && awayTeamSetScore == 2
+            var rulerDifferenceTwoPoints = homeTeamScore - awayTeamScore
+            var isTieBreaker = homeTeamSetScore == 2 && awayTeamSetScore == 2
 
-        if (!isTieBreaker) {
-            if (homeTeamScore >= 25 && rulerDifferenceTwoPoints > 1) {
-                homeTeamSetScore++
-                updateSet()
-            }
-        } else {
-            if (homeTeamScore >= 15 && rulerDifferenceTwoPoints > 1) {
-                homeTeamSetScore++
-                updateSet()
+            if (!isTieBreaker) {
+                if (homeTeamScore >= 25 && rulerDifferenceTwoPoints > 1) {
+                    homeTeamSetScore++
+                    saveRecords()
+
+                }
+            } else {
+                if (homeTeamScore >= 15 && rulerDifferenceTwoPoints > 1) {
+                    homeTeamSetScore++
+                    saveRecords()
+                }
             }
         }
     }
@@ -51,24 +59,25 @@ class  GameScoreViewModel(
     }
 
     fun onAwayTeamIncrease() {
-        awayTeamScore++
-        updateScore()
+        if (awayTeamScore < 25) {
+            awayTeamScore++
+            updateScore()
 
-        var rulerDifferenceTwoPoints = awayTeamScore - homeTeamScore
-        var isTieBreaker = awayTeamSetScore == 2 && homeTeamSetScore == 2
+            var rulerDifferenceTwoPoints = awayTeamScore - homeTeamScore
+            var isTieBreaker = awayTeamSetScore == 2 && homeTeamSetScore == 2
 
-        if(!isTieBreaker) {
-            if (awayTeamScore >= 25 && rulerDifferenceTwoPoints > 1) {
-                awayTeamSetScore++
-                updateSet()
-            }
-        } else {
-            if (awayTeamScore >= 15 && rulerDifferenceTwoPoints > 1) {
-                awayTeamSetScore++
-                updateSet()
+            if (!isTieBreaker) {
+                if (awayTeamScore >= 25 && rulerDifferenceTwoPoints > 1) {
+                    awayTeamSetScore++
+                    saveRecords()
+                }
+            } else {
+                if (awayTeamScore >= 15 && rulerDifferenceTwoPoints > 1) {
+                    awayTeamSetScore++
+                    saveRecords()
+                }
             }
         }
-
     }
 
     fun onAwayTeamDecrease() {
@@ -78,6 +87,10 @@ class  GameScoreViewModel(
 
     fun onExitPressed() {
         contract.onExitPressed()
+    }
+
+    fun finishGame() {
+        contract.finishGame()
     }
 
     private fun updateScore() {
@@ -91,7 +104,7 @@ class  GameScoreViewModel(
         if (homeTeamSetScore == 3 || awayTeamSetScore == 3) {
             homeTeamSetScore = 0
             awayTeamSetScore = 0
-//            FALTOU UM ALERT DIALOG NESSA LINHA QUANDO O JOGO ACABAR FALANDO O TIME QUE GANHOU, MAS NÃO CONSEGUI FAZER PROFESSOR
+            finishGame()
         }
 
         formattedHomeTeamSetScore = homeTeamSetScore.toString()
@@ -99,6 +112,25 @@ class  GameScoreViewModel(
 
         homeTeamScore = 0
         awayTeamScore = 0
+
         updateScore()
+
+
     }
+
+    private fun saveRecords() {
+        Thread {
+            insertRegister.execute(RecordModel(
+                homeTeamName = homeTeamName,
+                homeTeamScore = homeTeamScore,
+                homeTeamSetScore = homeTeamSetScore,
+                awayTeamName = awayTeamName,
+                awayTeamScore = awayTeamScore,
+                awayTeamSetScore = awayTeamSetScore,
+                date = Date().time
+            ))
+            updateSet()
+        }.start()
+    }
+
 }

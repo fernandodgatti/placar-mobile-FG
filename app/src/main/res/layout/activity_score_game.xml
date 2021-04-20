@@ -14,15 +14,15 @@
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark">
 
-       <ImageView
+        <ImageView
             android:layout_width="0dp"
-           android:layout_height="0dp"
-           android:src="@drawable/games_score"
-          android:scaleType="centerCrop"
+            android:layout_height="0dp"
+            android:src="@drawable/games_score"
+            android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
-           app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/scoreGuideline"
