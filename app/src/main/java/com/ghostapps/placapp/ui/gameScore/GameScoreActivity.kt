@@ -37,7 +37,7 @@ class GameScoreActivity: AppCompatActivity(), GameScoreContract {
     }
 
     override fun finishGame() {
-//Professor tentei usar o alert dialog abaixo comentado, vi sua aula novamente mas não rolou da o seguinte erro abaixo, estou comentando o código e vou tirar essa duvida com você
+//        Professor depois daquele sabado que a gente removeu o cancel ainda sim continua tendo o mesmo erro, tentei pegar outros exemplos na internet, até chegou a mudar o numero da thread e o PId mas o erro é o mesmo esse problema de looper.prepare
 //        04-19 22:07:10.269 4278-4325/com.ghostapps.placapp E/AndroidRuntime: FATAL EXCEPTION: Thread-292
 //        Process: com.ghostapps.placapp, PID: 4278
 //        java.lang.RuntimeException: Can't create handler inside thread that has not called Looper.prepare()
@@ -54,15 +54,12 @@ class GameScoreActivity: AppCompatActivity(), GameScoreContract {
 //        at com.ghostapps.placapp.viewModel.gameScore.GameScoreViewModel.access$updateSet(GameScoreViewModel.kt:10)
 //        at com.ghostapps.placapp.viewModel.gameScore.GameScoreViewModel$saveRecords$1.run(GameScoreViewModel.kt:128)
 //        at java.lang.Thread.run(Thread.java:818)
-//        var dialog: AlertDialog? = null
-//        dialog = AlertDialog.Builder(this)
-//            .setTitle("Remover Registro")
-//            .setMessage("Você tem certeza que deseja remover esse item? A operação não poderá ser desfeita!")
+//        AlertDialog.Builder(this)
+//            .setTitle("Fim de Jogo")
+//            .setMessage("Poxa o jogo acabou! Volte para a home para iniciar um novo jogo")
 //            .setNeutralButton("Voltar para a home") { _, _ ->
 //                finish()
-//                dialog?.cancel()
-//            }.create()
-//        dialog.show()
+//            }.create().show()
 
         finish()
     }

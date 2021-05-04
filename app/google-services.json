@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "825976036683",
+    "project_id": "scorolley",
+    "storage_bucket": "scorolley.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825976036683:android:45a1c45225e0cda8ec5cce",
+        "android_client_info": {
+          "package_name": "com.ghostapps.placapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "825976036683-3f7chd37empc5rugtg73sshgvi79j21v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ghostapps.placapp",
+            "certificate_hash": "cf8e8d52e8daa0d147165aa9b56eb23d56692772"
+          }
+        },
+        {
+          "client_id": "825976036683-7tue86j1l85gv6c8jrgfcqupkjav3e5p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXoFwJkv4WxysCzE3FY5JUVrpX2KR3IFY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "825976036683-7tue86j1l85gv6c8jrgfcqupkjav3e5p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

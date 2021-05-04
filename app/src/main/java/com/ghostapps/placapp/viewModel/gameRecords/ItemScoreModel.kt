@@ -1,6 +1,6 @@
-package com.ghostapps.placapp.domain.models
+package com.ghostapps.placapp.viewModel.gameRecords
 
-data class RecordModel(
+data class ItemScoreModel (
     val homeTeamName: String,
     val homeTeamScore: Int,
     val homeTeamSetScore: Int,
@@ -10,6 +10,4 @@ data class RecordModel(
     val awayTeamSetScore: Int,
 
     val date: Long
-) {
-    constructor() : this("", 0, 0, "", 0, 0, 0) {}
-}
+)

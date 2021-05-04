@@ -7,7 +7,10 @@ import com.ghostapps.placapp.data.records.RecordEntity
 import com.ghostapps.placapp.data.records.local.useCases.DeleteLocalRegister
 import com.ghostapps.placapp.data.records.local.useCases.GetAllLocalRegister
 import com.ghostapps.placapp.data.records.local.useCases.InsertLocalRegister
+import com.ghostapps.placapp.data.records.remote.useCases.GetAllFirebaseRegister
 import com.ghostapps.placapp.data.records.remote.useCases.GetAllRemoteRegister
+import com.ghostapps.placapp.data.records.remote.useCases.InsertFirebaseRegister
+import com.ghostapps.placapp.data.records.remote.useCases.LoginFirebase
 import com.ghostapps.placapp.infra.http.HttpAdapter
 import org.koin.android.ext.koin.androidApplication
 
@@ -22,7 +25,7 @@ object DataModules {
         }
 
         factory {
-            InsertLocalRegister(get())
+            InsertFirebaseRegister()
         }
 
         factory {
@@ -34,7 +37,11 @@ object DataModules {
         }
 
         factory {
-            GetAllRemoteRegister(get())
+            GetAllFirebaseRegister()
+        }
+
+        factory {
+            LoginFirebase(get())
         }
 
     }
