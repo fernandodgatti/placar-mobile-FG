@@ -3,10 +3,7 @@ package com.ghostapps.placapp.main.di
 import com.ghostapps.placapp.data.records.local.useCases.DeleteLocalRegister
 import com.ghostapps.placapp.data.records.local.useCases.GetAllLocalRegister
 import com.ghostapps.placapp.data.records.local.useCases.InsertLocalRegister
-import com.ghostapps.placapp.data.records.remote.useCases.GetAllFirebaseRegister
-import com.ghostapps.placapp.data.records.remote.useCases.GetAllRemoteRegister
-import com.ghostapps.placapp.data.records.remote.useCases.InsertFirebaseRegister
-import com.ghostapps.placapp.data.records.remote.useCases.LoginFirebase
+import com.ghostapps.placapp.data.records.remote.useCases.*
 import com.ghostapps.placapp.viewModel.gameRecords.GameRecordsViewModel
 import com.ghostapps.placapp.viewModel.gameScore.GameScoreContract
 import com.ghostapps.placapp.viewModel.gameScore.GameScoreViewModel
@@ -36,7 +33,7 @@ object ViewModelModules {
             GameScoreViewModel(contract, get<InsertFirebaseRegister>())
         }
         viewModel {
-            GameRecordsViewModel(get<GetAllFirebaseRegister>(), get<DeleteLocalRegister>())
+            GameRecordsViewModel(get<GetAllFirebaseRegister>(), get<DeleteFirebaseRegister>())
         }
     }
 

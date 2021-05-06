@@ -10,8 +10,8 @@ class LoginViewModel(
     private val login: Login
 ): BaseViewModel() {
 
-    var email: String = "teste@testes.com"
-    var password: String = "testando"
+    var email: String = ""
+    var password: String = ""
 
     val errorMessage = MutableLiveData<String>()
 
