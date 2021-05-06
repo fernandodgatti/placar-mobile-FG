@@ -31,7 +31,7 @@ class GameScoreViewModel(
     }
 
     fun onHomeTeamIncrease() {
-        if (homeTeamScore < 5){
+        if (homeTeamScore < 25){
             homeTeamScore++
             updateScore()
 
@@ -39,13 +39,13 @@ class GameScoreViewModel(
             var isTieBreaker = homeTeamSetScore == 2 && awayTeamSetScore == 2
 
             if (!isTieBreaker) {
-                if (homeTeamScore >= 5 && rulerDifferenceTwoPoints > 1) {
+                if (homeTeamScore >= 25 && rulerDifferenceTwoPoints > 1) {
                     homeTeamSetScore++
                     saveRecords()
 
                 }
             } else {
-                if (homeTeamScore >= 3 && rulerDifferenceTwoPoints > 1) {
+                if (homeTeamScore >= 15 && rulerDifferenceTwoPoints > 1) {
                     homeTeamSetScore++
                     saveRecords()
                 }
@@ -59,7 +59,7 @@ class GameScoreViewModel(
     }
 
     fun onAwayTeamIncrease() {
-        if (awayTeamScore < 5) {
+        if (awayTeamScore < 25) {
             awayTeamScore++
             updateScore()
 
@@ -67,12 +67,12 @@ class GameScoreViewModel(
             var isTieBreaker = awayTeamSetScore == 2 && homeTeamSetScore == 2
 
             if (!isTieBreaker) {
-                if (awayTeamScore >= 5 && rulerDifferenceTwoPoints > 1) {
+                if (awayTeamScore >= 25 && rulerDifferenceTwoPoints > 1) {
                     awayTeamSetScore++
                     saveRecords()
                 }
             } else {
-                if (awayTeamScore >= 3 && rulerDifferenceTwoPoints > 1) {
+                if (awayTeamScore >= 15 && rulerDifferenceTwoPoints > 1) {
                     awayTeamSetScore++
                     saveRecords()
                 }
